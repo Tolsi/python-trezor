@@ -183,6 +183,20 @@ class TxApiBlockCypher(TxApi):
 
         return t
 
+class TxApiWaves(TxApi):
+
+    def __init__(self, network, url, zcash=None):
+        super(TxApiWaves, self).__init__(network, url)
+        self.pushtx_url = url + "/transactions/broadcast"
+
+    def get_tx(self, txhash):
+        # /transactions/info
+        data = self.fetch_json('txs', txhash)
+
+        # todo parse tx
+
+        return t
+
 
 TxApiBitcoin = TxApiInsight(network='insight_bitcoin', url='https://btc-bitcore1.trezor.io/api/')
 TxApiTestnet = TxApiInsight(network='insight_testnet', url='https://testnet-bitcore3.trezor.io/api/')
@@ -194,3 +208,4 @@ TxApiDecredTestnet = TxApiInsight(network='insight_decred_testnet', url='https:/
 TxApiDogecoin = TxApiBlockCypher(network='blockcypher_dogecoin', url='https://api.blockcypher.com/v1/doge/main/')
 TxApiSegnet = TxApiSmartbit(network='smartbit_segnet', url='https://segnet-api.smartbit.com.au/v1/blockchain/')
 TxApiMonacoin = TxApiInsight(network='insight_monacoin', url='https://mona.insight.monaco-ex.org/insight-api-monacoin/')
+TxApiWaves = TxApiInsight(network='waves_mainnet', url='https://nodes.wavesnodes.com/')
