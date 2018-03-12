@@ -96,6 +96,8 @@ from .NEMSignTx import *
 from .NEMSignedTx import *
 from .PassphraseAck import *
 from .PassphraseRequest import *
+from .PassphraseStateAck import *
+from .PassphraseStateRequest import *
 from .PinMatrixAck import *
 from .PinMatrixRequest import *
 from .Ping import *
@@ -114,6 +116,13 @@ from .TxAck import *
 from .TxRequest import *
 from .TxSize import *
 from .VerifyMessage import *
+from .WavesGetAddress import *
+from .WavesMessageSignature import *
+from .WavesSignMessage import *
+from .WavesSignTx import *
+from .WavesTxAck import *
+from .WavesTxRequest import *
+from .WavesVerifyMessage import *
 from .WipeDevice import *
 from .WordAck import *
 from .WordRequest import *

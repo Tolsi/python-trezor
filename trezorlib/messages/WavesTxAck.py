@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from .. import protobuf as p
 
 
-class Initialize(p.MessageType):
+class WavesTxAck(p.MessageType):
     FIELDS = {
-        1: ('state', p.BytesType, 0),
+        1: ('data_chunk', p.BytesType, 0),
     }
-    MESSAGE_WIRE_TYPE = 0
+    MESSAGE_WIRE_TYPE = 116

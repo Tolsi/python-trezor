@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from .. import protobuf as p
 
 
-class Initialize(p.MessageType):
+class PassphraseStateRequest(p.MessageType):
     FIELDS = {
         1: ('state', p.BytesType, 0),
     }
-    MESSAGE_WIRE_TYPE = 0
+    MESSAGE_WIRE_TYPE = 77
