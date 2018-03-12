@@ -837,6 +837,19 @@ def cosi_sign(connect, address, data, global_commitment, global_pubkey):
     address_n = client.expand_path(address)
     return client.cosi_sign(address_n, binascii.unhexlify(data), binascii.unhexlify(global_commitment), binascii.unhexlify(global_pubkey))
 
+#
+# Waves functions
+#
+
+@cli.command(help='Get Waves address in Base58 encoding.')
+@click.option('-n', '--address', required=True, help="BIP-32 path, e.g. m/44'/5741564'/0'/0/0")
+@click.option('-d', '--show-display', is_flag=True)
+@click.pass_obj
+def waves_get_address(connect, address, show_display):
+    client = connect()
+    address_n = client.expand_path(address)
+    address = client.waves_get_address(address_n, show_display)
+    return address
 
 #
 # Main

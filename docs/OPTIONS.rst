@@ -60,4 +60,5 @@ Use the following command to see all options:
     sign_tx                  Sign transaction.
     verify_message           Verify message.
     version                  Show version of trezorctl/trezorlib.
-    wipe_device              Reset device to factory defaults and remove...
+    waves_get_address        Get Waves address in Base58 encoding.
+    wipe_device              Reset device to factory defaults and remove.

@@ -526,6 +526,13 @@ class ProtocolMixin(object):
         n = self._convert_prime(n)
         return self.call(proto.EthereumGetAddress(address_n=n, show_display=show_display))
 
+
+    @field('address')
+    @expect(proto.Address)
+    def waves_get_address(self, n, show_display=False, multisig=None):
+        n = self._convert_prime(n)
+        return self.call(proto.WavesGetAddress(address_n=n, show_display=show_display))
+
     @session
     def ethereum_sign_tx(self, n, nonce, gas_price, gas_limit, to, value, data=None, chain_id=None):
         def int_to_big_endian(value):
