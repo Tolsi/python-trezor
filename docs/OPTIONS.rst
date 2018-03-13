@@ -61,4 +61,7 @@ Use the following command to see all options:
     verify_message           Verify message.
     version                  Show version of trezorctl/trezorlib.
     waves_get_address        Get Waves address in Base58 encoding.
+    waves_sign_message       Sign message with Waves address.
+    waves_sign_tx            Sign (and optionally publish) Waves transaction.
+    waves_verify_message     Verify message signed with Waves address.
     wipe_device              Reset device to factory defaults and remove.
