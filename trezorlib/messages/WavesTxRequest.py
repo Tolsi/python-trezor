@@ -6,8 +6,6 @@ from .. import protobuf as p
 class WavesTxRequest(p.MessageType):
     FIELDS = {
         1: ('data_length', p.UVarintType, 0),
-        2: ('signature_v', p.UVarintType, 0),
-        3: ('signature_r', p.BytesType, 0),
-        4: ('signature_s', p.BytesType, 0),
+        2: ('signature', p.BytesType, 0),
     }
     MESSAGE_WIRE_TYPE = 115

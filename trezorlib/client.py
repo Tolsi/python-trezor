@@ -577,6 +577,13 @@ class ProtocolMixin(object):
         message = normalize_nfc(message).encode('utf-8')
         return self.call(proto.EthereumSignMessage(address_n=n, message=message))
 
+    @expect(proto.WavesMessageSignature)
+    def waves_sign_message(self, n, message):
+        n = self._convert_prime(n)
+        # Convert message to UTF8 NFC (seems to be a bitcoin-qt standard)
+        # message = normalize_nfc(message).encode('utf-8')
+        return self.call(proto.WavesSignMessage(address_n=n, message=message.encode('utf-8')))
+
     def ethereum_verify_message(self, address, signature, message):
         # Convert message to UTF8 NFC (seems to be a bitcoin-qt standard)
         message = normalize_nfc(message).encode('utf-8')

@@ -851,6 +851,21 @@ def waves_get_address(connect, address, show_display):
     address = client.waves_get_address(address_n, show_display)
     return address
 
+@cli.command(help='Sign message with Waves address.')
+@click.option('-n', '--address', required=True, help="BIP-32 path, e.g. m/44'/60'/0'/0/0")
+@click.argument('message')
+@click.pass_obj
+def waves_sign_message(connect, address, message):
+    client = connect()
+    address_n = client.expand_path(address)
+    ret = client.waves_sign_message(address_n, message)
+    output = {
+        'message': message,
+        'public_key': '0x%s' % binascii.hexlify(ret.public_key).decode(),
+        'signature': '0x%s' % binascii.hexlify(ret.signature).decode()
+    }
+    return output
+
 #
 # Main
 #

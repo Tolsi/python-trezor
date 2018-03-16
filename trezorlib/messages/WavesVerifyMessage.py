@@ -5,7 +5,7 @@ from .. import protobuf as p
 
 class WavesVerifyMessage(p.MessageType):
     FIELDS = {
-        1: ('address', p.UnicodeType, 0),
+        1: ('public_key', p.BytesType, 0),
         2: ('signature', p.BytesType, 0),
         3: ('message', p.BytesType, 0),
     }
