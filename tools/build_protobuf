@@ -21,7 +21,11 @@ for i in types messages ; do
 done
 
 # hack to make output python 3 compatible
-sed -i 's/^import types_pb2/from . import types_pb2/g' $CURDIR/pb2/messages_pb2.py
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' 's/^import types_pb2/from . import types_pb2/g' $CURDIR/pb2/messages_pb2.py
+else
+    sed -i 's/^import types_pb2/from . import types_pb2/g' $CURDIR/pb2/messages_pb2.py
+fi
 
 for i in types messages ; do
     # Convert google protobuf library to trezor's internal format
@@ -30,3 +34,4 @@ for i in types messages ; do
 done
 
 rm -rf $PB2DIR
+rm -f $INDEX
