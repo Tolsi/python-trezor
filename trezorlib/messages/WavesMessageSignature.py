@@ -8,4 +8,4 @@ class WavesMessageSignature(p.MessageType):
         1: ('public_key', p.BytesType, 0),
         2: ('signature', p.BytesType, 0),
     }
-    MESSAGE_WIRE_TYPE = 119
+    MESSAGE_WIRE_TYPE = 118

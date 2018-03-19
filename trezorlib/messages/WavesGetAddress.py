@@ -8,4 +8,4 @@ class WavesGetAddress(p.MessageType):
         1: ('address_n', p.UVarintType, p.FLAG_REPEATED),
         2: ('show_display', p.BoolType, 0),
     }
-    MESSAGE_WIRE_TYPE = 120
+    MESSAGE_WIRE_TYPE = 119
