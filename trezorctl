@@ -26,6 +26,7 @@ import click
 import functools
 import json
 import sys
+import codecs
 
 from trezorlib.client import TrezorClient, TrezorClientVerbose, CallException
 from trezorlib.device import TrezorDevice
@@ -578,11 +579,11 @@ def ethereum_sign_message(connect, address, message):
     return output
 
 
-def ethereum_decode_hex(value):
+def decode_hex(value):
     if value.startswith('0x') or value.startswith('0X'):
-        return value[2:].decode('hex')
+        return codecs.decode(value[2:], 'hex')
     else:
-        return value.decode('hex')
+        return codecs.decode(value, 'hex')
 
 
 @cli.command(help='Verify message signed with Ethereum address.')
@@ -591,8 +592,8 @@ def ethereum_decode_hex(value):
 @click.argument('message')
 @click.pass_obj
 def ethereum_verify_message(connect, address, signature, message):
-    address = ethereum_decode_hex(address)
-    signature = ethereum_decode_hex(signature)
+    address = decode_hex(address)
+    signature = decode_hex(signature)
     return connect().ethereum_verify_message(address, signature, message)
 
 
@@ -725,7 +726,7 @@ def ethereum_sign_tx(connect, host, chain_id, address, value, gas_limit, gas_pri
     if gas_limit is not None:
         gas_limit = int(gas_limit)
 
-    to_address = ethereum_decode_hex(to)
+    to_address = decode_hex(to)
 
     client = connect()
     address_n = client.expand_path(address)
@@ -737,7 +738,7 @@ def ethereum_sign_tx(connect, host, chain_id, address, value, gas_limit, gas_pri
 
     if not data:
         data = ''
-    data = ethereum_decode_hex(data)
+    data = decode_hex(data)
 
     if gas_price is None:
         gas_price = eth.eth_gasPrice()
